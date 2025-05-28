@@ -1,8 +1,14 @@
-const express =require('express')
+const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
-const articleRouter =  require("./routes/articles")
+const articleRouter = require("./routes/articles")
+
+mongoose.connect('mongodb://localhost/blog')
+
 app.set('view engine','ejs')
+app.use(express.urlencoded({ extended: false }))
 app.use('/articles',articleRouter)
+
 app.get("/",(req,res)=>{
     const articles = [
         {
@@ -21,7 +27,7 @@ app.get("/",(req,res)=>{
             description: "How to create dynamic web pages using EJS templating"
         }
     ]
-    res.render("articles/index.ejs",{articles:articles})
+    res.render("articles/index",{articles:articles})
 })
 
 app.listen(3000)

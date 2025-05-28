@@ -9,4 +9,8 @@ router.get("/", (req, res) => {
     res.render("articles/index")
 })
 
+router.post('/', (req, res) => {
+    res.send('Submitted')
+})
+
 module.exports = router
