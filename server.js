@@ -21,7 +21,7 @@ app.get("/",(req,res)=>{
             description: "How to create dynamic web pages using EJS templating"
         }
     ]
-    res.render("index.ejs",{articles:articles})
+    res.render("articles/index.ejs",{articles:articles})
 })
 
 app.listen(3000)
